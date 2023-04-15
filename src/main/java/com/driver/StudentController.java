@@ -19,9 +19,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("students")
 public class StudentController {
 
+    @Autowired
+    StudentService studentService;
+
     @PostMapping("/add-student")
     public ResponseEntity<String> addStudent(@RequestBody Student student){
 
+        studentService.addStudent(student);
         return new ResponseEntity<>("New student added successfully", HttpStatus.CREATED);
     }
 
@@ -39,7 +43,7 @@ public class StudentController {
 
     @GetMapping("/get-student-by-name/{name}")
     public ResponseEntity<Student> getStudentByName(@PathVariable String name){
-        Student student = null; // Assign student by calling service layer method
+        Student student = studentService.getStudentByName(name); // Assign student by calling service layer method
 
         return new ResponseEntity<>(student, HttpStatus.CREATED);
     }
