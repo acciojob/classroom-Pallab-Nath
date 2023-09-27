@@ -2,7 +2,7 @@ name: Acciojob Tests
 
 on:
  push:
-    branches: [ "master" ]
+    branches: [ "main","master" ]
 
 jobs:
   calling-acciojob-main-action:
